@@ -1,11 +1,8 @@
 //app.js
 
 $(document).ready(function(){
-	$.ajax ({
-		url:"https://ironhack-character.herokuapp.com/characters",
-		success: showCharacters,
-		error: characterLoadError,
-	})
+	getCharactersFromApi(); 	
+
 	$(".js-character-form").on("submit", function(event){
 		event.preventDefault();
 		
@@ -18,23 +15,26 @@ $(document).ready(function(){
 			name: name,
 			occupation: occupation,
 			weapon: weapon,
-		};
+		}
 
 		$.ajax({
-			type:"POST",
-			url: "https://ironhack-character.herokuapp.com/characters",
-			data:params,
+			type: "POST",
+			url: "https://ironhack-characters.herokuapp.com/characters",
+			data: params,
 			success: updateList,
 			error: characterError
-		})
+		});
+	});
+});
 
 
 function getCharactersFromApi(){
 	$.ajax ({
-		url:"https://ironhack-character.herokuapp.com/characters",
+		type: "GET",
+		url: "https://ironhack-characters.herokuapp.com/characters",
 		success: showCharacters,
 		error: characterLoadError,
-	})
+	});
 
 
 }
@@ -44,33 +44,34 @@ function getCharactersFromApi(){
 function showCharacters(response){
 	response.forEach(function(character){
 		appendCharacter(character);
-	})
+	});
 }
 function appendCharacter (character){
+	
 	var html = `
 
 		 <li>
-		 	name: ${name}
-		 	occupation: ${occupation}
-		 	weapon: ${weapon}
-		 <li>
+		 	name: ${character.name}
+		 	occupation: ${character.occupation}
+		 	weapon: ${character.weapon}
+		 </li>
 	`;
 		$(".js-character-list").append(html);	
 
 	}
-})
 
-}
 
-function characterLoadError(response){
-	console.log(response)
+
+function characterLoadError(err){
+	console.log("Error", err);
 }
 
 function updateList(response){
-	$(".js-character-list").empty()
+	$(".js-character-list").empty();
+	$(".js-character-list").append();
 	getCharactersFromApi();
 }
 
 function characterError(err){
-	console.log("Error", err)
+	console.log("Error", err);
 }
