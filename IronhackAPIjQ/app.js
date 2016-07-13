@@ -14,8 +14,8 @@ $(document).ready(function(){
 		var params = {
 			name: name,
 			occupation: occupation,
-			weapon: weapon,
-		}
+			weapon: weapon
+		};
 
 		$.ajax({
 			type: "POST",
