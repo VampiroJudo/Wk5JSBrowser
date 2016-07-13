@@ -9,7 +9,9 @@ $(document).ready(function(){
 		console.log("This browser does not have geolocation. :/");
 	}
 
+	
 
+});
 
 function showPosition(position) {
 	console.log("User consented to give location.");
@@ -17,6 +19,9 @@ function showPosition(position) {
 
 	var lat = position.coords.latitude;
 	var lng = position.coords.longitude;
+	
+	
+
 
 	var html = `
 	<h2>Your Position</h2>
@@ -24,8 +29,14 @@ function showPosition(position) {
 		<li> Latitude: ${lat}</li>
 		<li> Longitude: ${lng}</li>
 	</ul>
-    `;
+	`;
+
+	
+		var img = ` <img src="https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&size=640x400&zoom=20" alt="Your locale"></img>
+	`;
+    
     $("body").append(html);
+    $("body").append(img);
 }
 
 function handleError(error) {
@@ -39,4 +50,3 @@ function handleError(error) {
 }
 
 
-});
