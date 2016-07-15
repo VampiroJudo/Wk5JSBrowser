@@ -5,7 +5,7 @@ PokemonApp.Pokemon = class {
 	constructor (pokemonUri) {
 		this.id = PokemonApp.idFromUri( pokemonUri );
 
-}
+	}
 
 
 	render () {
@@ -15,7 +15,14 @@ PokemonApp.Pokemon = class {
 			type: "GET",
 			url: "/api/pokemon/" + this.id,
 			success: function(response) {
-				
+				console.log(response);
+
+				var myPokeImage = new PokemonApp.PokeImage(response.sprites[0].resource_uri);
+				myPokeImage.render();
+
+				var descriptionComponent = new PokemonApp.Description(response.description.resource_uri);
+				descriptionComponent.render();
+
 				$(".js-pkmn-name").text(response.name);
 				$(".js-pkmn-number").text(response.pkdk_id);
 				$(".js-pkmn-height").text(response.height);
