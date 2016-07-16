@@ -1,15 +1,21 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Spotify Search</title>
-	<script   src="https://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="   crossorigin="anonymous"></script>
-</head>
+	<html>
+		<head>
+			<title>Spotify Search</title>
+			<meta charset="UTF-8">
+			<script   src="https://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="   crossorigin="anonymous"></script>
+			<script src="app.js"></script>
+		</head>
 
-<body>
-		<h1>Spotify Search</h1>
-	<form>
-		<input type="text" name="name"></input>
-		<button type="submit" value="submit">Submit</button>
-	</form>
-</body>
+	<body>
+
+		<ul 
+			class="js-artist-info">
+		</ul>
+			<h1>Spotify Search</h1>
+		<form class="js-artist-form">
+			<input type="text" name="name" id="artistName">Artist Name</input>
+			<button type="submit" value="submit">Submit</button>
+		</form>
+	</body>
 </html>
