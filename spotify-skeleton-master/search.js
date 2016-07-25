@@ -27,16 +27,16 @@ function   findArtist(){
 
 function showArtist(result){
 	console.log(result);
-	var findings =  result.tracks.items[0].artists[0].name;
+	var findings1 =  result.tracks.items[0].artists[0].name;
 	var findings2 = result.tracks.items[0].name;
 	var findings3 = result.tracks.items[0].album.images[0].url;
 	var findings4 = result.tracks.items[0].preview_url;
-		$("p.author").text(findings);
+		$("p.author").text(findings1);
 		$("p.title").text(findings2);
 		$('img').attr('src',findings3);
 		$('audio').attr('src',findings4);
 		$('.js-player').trigger('play');
-		// $('.js-player').trigger('pause');
+		$('.js-player').trigger('pause');
 }
 
 function renderError(error){
